@@ -1,8 +1,11 @@
 from fastapi import FastAPI
 
-app = FastAPI(title="AI Enterprise Cost Intelligence API")
-
+app = FastAPI()
 
 @app.get("/")
 def root():
-    return {"message": "AI Enterprise Cost Intelligence API is running"}
+    return {"status": "ok"}
+
+@app.get("/health")
+def health():
+    return {"status": "healthy"}
