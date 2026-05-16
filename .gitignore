@@ -1,9 +1,6 @@
-# Python
+backend/venv/
+venv/
 __pycache__/
 *.pyc
-backend/venv/
 .env
-
-# OS
-.DS_Store
-Thumbs.db
+node_modules/
