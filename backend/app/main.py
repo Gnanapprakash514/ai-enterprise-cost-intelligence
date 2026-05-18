@@ -1,18 +1,21 @@
 from fastapi import FastAPI
+from app.core.config import settings
 
 app = FastAPI(
-    title="Enterprise Cost Intelligence API",
-    version="1.0.0"
+    title=settings.APP_NAME,
+    version=settings.APP_VERSION,
+    debug=settings.DEBUG,
 )
 
 @app.get("/")
 def root():
     return {
-        "message": "AI for Enterprise Cost Intelligence Backend is Running"
+        "message": f"{settings.APP_NAME}is Running"
     }
 
 @app.get("/health")
 def health_check():
     return {
-        "status": "healthy"
+        "status": "healthy",
+        "environment": settings.ENVIRONMENT,
     }
