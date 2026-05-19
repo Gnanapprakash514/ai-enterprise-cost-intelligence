@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     OPENAI_MODEL:str="gpt-4.1-mini"
 
     #Database settings
-    DATABASE_URL:str = ("postgresql://postgres:rohit45@localhost:5432/cost_intelligence")
+    DATABASE_URL:str = ("postgresql://postgres:gnana45@localhost:5432/cost_intelligence")
 
     #AWS settings
     AWS_ACCESS_KEY_ID:str = ""
