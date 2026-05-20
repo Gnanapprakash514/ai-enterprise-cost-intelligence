@@ -4,52 +4,45 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.core import get_db
-from app.models import CostRecord
 from app.schemas import CostRecordCreate, CostRecordResponse
+from app.services import (
+    create_cost_record,
+    get_all_cost_records,
+    get_cost_record_by_id,
+)
 
 router = APIRouter(
     prefix="/cost-records",
-    tags=["Cost Records"]
+    tags=["Cost Records"],
 )
 
 
 @router.post("/", response_model=CostRecordResponse)
-def create_cost_record(
+def create_record(
     cost_data: CostRecordCreate,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
-    new_record = CostRecord(**cost_data.model_dump())
-
-    db.add(new_record)
-    db.commit()
-    db.refresh(new_record)
-
-    return new_record
+    return create_cost_record(db, cost_data)
 
 
 @router.get("/", response_model=List[CostRecordResponse])
-def get_all_cost_records(
-    db: Session = Depends(get_db)
+def get_records(
+    db: Session = Depends(get_db),
 ):
-    records = db.query(CostRecord).all()
-    return records
+    return get_all_cost_records(db)
 
 
 @router.get("/{record_id}", response_model=CostRecordResponse)
-def get_cost_record(
+def get_record(
     record_id: int,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
-    record = (
-        db.query(CostRecord)
-        .filter(CostRecord.id == record_id)
-        .first()
-    )
+    record = get_cost_record_by_id(db, record_id)
 
     if not record:
         raise HTTPException(
             status_code=404,
-            detail="Cost record not found"
+            detail="Cost record not found",
         )
 
     return record
