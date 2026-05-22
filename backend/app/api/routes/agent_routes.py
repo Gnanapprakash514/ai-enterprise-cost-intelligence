@@ -28,3 +28,9 @@ def get_recommendations(
     db: Session = Depends(get_db),
 ):
     return generate_recommendations(db)
+
+@router.get("/execute")
+def execute_actions(
+    db: Session = Depends(get_db),
+):
+    return execute_approved_actions(db)
