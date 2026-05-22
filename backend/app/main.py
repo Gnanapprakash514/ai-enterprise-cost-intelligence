@@ -3,7 +3,7 @@ from sqlalchemy import text
 from app.api.routes import cost_router, upload_router
 from app.core import settings, engine, Base
 from app.models import CostRecord
-from app.api.routes import cost_router
+from app.api.routes import cost_router,upload_router, analysis_router,agent_router
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -25,7 +25,16 @@ app.include_router(
 )
 
 app.include_router(
+    analysis_router,
+    prefix=settings.API_V1_PREFIX,
+)
+
+app.include_router(
     upload_router,
+    prefix=settings.API_V1_PREFIX,
+)
+app.include_router(
+    agent_router,
     prefix=settings.API_V1_PREFIX,
 )
 
