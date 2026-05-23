@@ -34,3 +34,15 @@ def execute_actions(
     db: Session = Depends(get_db),
 ):
     return execute_approved_actions(db)
+
+@router.get("/monitor")
+def monitor_actions(
+    db: Session = Depends(get_db),
+):
+    return monitor_executions(db)
+
+@router.get("/reports")
+def get_reports(
+    db: Session = Depends(get_db),
+):
+    return generate_reports(db)

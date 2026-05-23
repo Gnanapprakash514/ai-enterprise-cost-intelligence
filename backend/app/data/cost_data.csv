@@ -1,0 +1,25 @@
+department,service_name,vendor,cost_amount,currency,usage_quantity,usage_unit,record_date
+IT,EC2 Compute,AWS,12000,USD,300,hours,2026-05-01
+IT,EC2 Compute,AWS,15000,USD,320,hours,2026-05-02
+IT,EC2 Compute,AWS,18000,USD,350,hours,2026-05-03
+IT,EC2 Compute,AWS,45000,USD,700,hours,2026-05-04
+Finance,S3 Storage,AWS,4000,USD,1200,GB,2026-05-01
+Finance,S3 Storage,AWS,4200,USD,1250,GB,2026-05-02
+Finance,S3 Storage,AWS,3900,USD,1180,GB,2026-05-03
+Finance,S3 Storage,AWS,4100,USD,1220,GB,2026-05-04
+HR,Office365 License,Microsoft,2500,USD,100,licenses,2026-05-01
+HR,Office365 License,Microsoft,2600,USD,102,licenses,2026-05-02
+HR,Office365 License,Microsoft,2550,USD,101,licenses,2026-05-03
+HR,Office365 License,Microsoft,12000,USD,300,licenses,2026-05-04
+Engineering,RDS Database,AWS,9000,USD,200,hours,2026-05-01
+Engineering,RDS Database,AWS,9200,USD,210,hours,2026-05-02
+Engineering,RDS Database,AWS,9400,USD,220,hours,2026-05-03
+Engineering,RDS Database,AWS,28000,USD,500,hours,2026-05-04
+Marketing,BigQuery Analytics,Google Cloud,7000,USD,1000,queries,2026-05-01
+Marketing,BigQuery Analytics,Google Cloud,7100,USD,1020,queries,2026-05-02
+Marketing,BigQuery Analytics,Google Cloud,6900,USD,980,queries,2026-05-03
+Marketing,BigQuery Analytics,Google Cloud,7200,USD,1010,queries,2026-05-04
+Operations,Blob Storage,Azure,5000,USD,1500,GB,2026-05-01
+Operations,Blob Storage,Azure,5100,USD,1520,GB,2026-05-02
+Operations,Blob Storage,Azure,4950,USD,1490,GB,2026-05-03
+Operations,Blob Storage,Azure,5300,USD,1530,GB,2026-05-04
