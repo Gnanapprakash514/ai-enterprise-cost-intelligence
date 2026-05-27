@@ -47,6 +47,11 @@ def get_reports(
 ):
     return generate_reports(db)
 
+@router.get("/autonomous-execution")
+def autonomous_execution():
+
+    return autonomous_optimization()
+
 @router.get("/ai-insights")
 def get_ai_insights(
     db: Session = Depends(get_db)
