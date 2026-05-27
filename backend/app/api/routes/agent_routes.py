@@ -46,3 +46,10 @@ def get_reports(
     db: Session = Depends(get_db),
 ):
     return generate_reports(db)
+
+@router.get("/ai-insights")
+def get_ai_insights(
+    db: Session = Depends(get_db)
+):
+
+    return generate_ai_insights(db)
