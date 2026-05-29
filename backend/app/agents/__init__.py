@@ -6,6 +6,8 @@ from .monitoring_agent import monitor_executions
 from .reporting_agent import generate_reports
 from .openai_agent import generate_ai_insights
 from .autonomous_agent import  autonomous_optimization
+from .cloud_execution_agent import execute_ec2_shutdown
+
 __all__ = [
     "generate_spend_insights",
     "generate_recommendations",
@@ -14,5 +16,6 @@ __all__ = [
     "monitor_executions",
     "generate_reports",
     "generate_ai_insights",
-    "autonomous_optimization"
+    "autonomous_optimization",
+    "execute_ec2_shutdown"
 ]

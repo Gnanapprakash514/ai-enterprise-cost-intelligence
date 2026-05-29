@@ -1,7 +1,9 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-
+from app.services.automation_service import (
+    auto_generate_approvals
+)
 from app.core import get_db
 from app.agents import *
 
@@ -51,6 +53,17 @@ def get_reports(
 def autonomous_execution():
 
     return autonomous_optimization()
+
+@router.post(
+    "/auto-generate-approvals"
+)
+def generate_approvals(
+    db: Session = Depends(get_db)
+):
+
+    return auto_generate_approvals(
+        db
+    )
 
 @router.get("/ai-insights")
 def get_ai_insights(
