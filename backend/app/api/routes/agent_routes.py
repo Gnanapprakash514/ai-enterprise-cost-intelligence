@@ -60,10 +60,19 @@ def autonomous_execution():
 def generate_approvals(
     db: Session = Depends(get_db)
 ):
+    # Old method - based on anomalies from cost records
+    return auto_generate_approvals(db)
 
-    return auto_generate_approvals(
-        db
-    )
+@router.post("/intelligent-scan")
+def run_intelligent_scan(
+    db: Session = Depends(get_db)
+):
+    """
+    NEW: Intelligent autonomous scan that analyzes actual AWS usage
+    and creates approval requests for underutilized resources.
+    """
+    from app.services.intelligent_optimization_service import run_intelligent_optimization
+    return run_intelligent_optimization(db)
 
 @router.get("/ai-insights")
 def get_ai_insights(

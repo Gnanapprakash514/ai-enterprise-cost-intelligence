@@ -12,10 +12,8 @@ class ApprovalRequest(Base):
     instance_id = Column(String, nullable=False)
 
     action = Column(String, nullable=False)
-    estimated_savings = Column(
-        Float,
-        default=0
-    )
+    
+    estimated_savings = Column(Float, default=0)
     
     status = Column(
         String,

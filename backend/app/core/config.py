@@ -15,12 +15,12 @@ class Settings(BaseSettings):
     OPENAI_MODEL:str="gpt-4.1-mini"
 
     #Database settings
-    DATABASE_URL:str = ("postgresql://postgres:gnana45@localhost:5432/cost_intelligence")
+    DATABASE_URL:str = ""
 
     #AWS settings
     AWS_ACCESS_KEY_ID:str = ""
     AWS_SECRET_ACCESS_KEY:str = ""
-    AWS_REGION:str = "ap-south-1"
+    AWS_REGION:str = "us-east-1"
     S3_BUCKET_NAME:str = "" 
 
     #Security settings

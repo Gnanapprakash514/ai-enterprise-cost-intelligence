@@ -1,9 +1,12 @@
 from fastapi import FastAPI
 from sqlalchemy import text
-from app.api.routes import cost_router, upload_router
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.api.routes import cost_router, upload_router, analysis_router, agent_router, cloud_router, dashboard_router
 from app.core import settings, engine, Base
 from app.models import CostRecord
-from app.api.routes import cost_router,upload_router, analysis_router,agent_router,cloud_router
+from app.models.approval_request import ApprovalRequest
+from app.models.audit_log import AuditLog
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -14,35 +17,22 @@ app = FastAPI(
     debug=settings.DEBUG,
 )
 
+# Enable CORS for frontend integration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Register API routes
-app.include_router(
-    cost_router,
-    prefix=settings.API_V1_PREFIX
-)
-app.include_router(
-    cost_router,
-    prefix=settings.API_V1_PREFIX,
-)
-
-app.include_router(
-    analysis_router,
-    prefix=settings.API_V1_PREFIX,
-)
-
-app.include_router(
-    upload_router,
-    prefix=settings.API_V1_PREFIX,
-)
-app.include_router(
-    agent_router,
-    prefix=settings.API_V1_PREFIX,
-)
-
-app.include_router(
-    cloud_router,
-    prefix=settings.API_V1_PREFIX
-)
-
+app.include_router(cost_router, prefix=settings.API_V1_PREFIX)
+app.include_router(analysis_router, prefix=settings.API_V1_PREFIX)
+app.include_router(upload_router, prefix=settings.API_V1_PREFIX)
+app.include_router(agent_router, prefix=settings.API_V1_PREFIX)
+app.include_router(cloud_router, prefix=settings.API_V1_PREFIX)
+app.include_router(dashboard_router, prefix=settings.API_V1_PREFIX)
 
 @app.get("/")
 def root():
